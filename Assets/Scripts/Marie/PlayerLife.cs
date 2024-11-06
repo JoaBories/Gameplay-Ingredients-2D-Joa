@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
@@ -22,6 +23,10 @@ public class PlayerLife : MonoBehaviour
         _animator.SetTrigger("Hurt");
         _audioPlayer.PlayAudio(SoundFX.Hurt);
         UpdateUI();
+        if (_life <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     public void Heal(int heal)
