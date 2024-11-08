@@ -7,41 +7,88 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject maxLeft;
     [SerializeField] private GameObject maxRight;
-    [SerializeField] private float shootCooldown;
+    [SerializeField] private float actionCooldown;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private List<GameObject> lifeList;
+    private float nextAction;
     private bool canMove;
-    private float nextShoot;
+    private int actionCount;
+    private int life;
 
     private void Start()
     {
         canMove = true;
-        nextShoot = Time.time + shootCooldown;
+        nextAction = Time.time + actionCooldown;
+        life = 3;
     }
 
     private void Update()
     {
         if (canMove)
         {
-            Vector3 nextPos = transform.position - new Vector3(transform.position.x - player.transform.position.x, 0, 0) * Time.deltaTime * 4;
-            if (nextPos.x >= maxLeft.transform.position.x && nextPos.x <= maxRight.transform.position.x)
+            if (transform.position.x < player.transform.position.x && transform.position.x + moveSpeed * Time.deltaTime < maxRight.transform.position.x)
             {
-                transform.position = nextPos;
+                transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+            }
+            else if (transform.position.x > player.transform.position.x && transform.position.x - moveSpeed * Time.deltaTime > maxLeft.transform.position.x)
+            {
+                transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+            }
+
+
+            if (Time.time > nextAction)
+            {
+                if (actionCount == 1)
+                {
+                    smash();
+                    actionCount = 0;
+                }
+                else
+                {
+                    shoot();
+                    actionCount++;
+                }
             }
         }
-        if (Time.time > nextShoot) shoot();
+        else
+        {
+            if (Time.time > nextAction) nextAction = Time.time + actionCooldown;
+        }
         
+        for (int i = 0; i < life; i++)
+        {
+            lifeList[i].SetActive(true);
+        }
+
     }
 
     private void shoot()
     {
         GetComponent<Animator>().Play("BossShoot");
-        StartCoroutine(timeBeforeCanMove(2f));
-        nextShoot = Time.time + shootCooldown;
+        canMove = false;
+        nextAction = Time.time + actionCooldown + 2f;
     }
 
-    IEnumerator timeBeforeCanMove(float time)
+    private void smash()
     {
-        canMove = false;
-        yield return new WaitForSeconds(time);
+        GetComponent<Animator>().Play("BossSmash");
+        canMove= false;
+        nextAction = Time.time + actionCooldown + 4.1f;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            life--;
+            if (life >= 0) GetComponent<Animator>().SetTrigger("hit");
+            else GetComponent<Animator>().
+            collision.GetComponent<Rigidbody2D>().velocity += Vector2.up * 20;
+        }
+    }
+
+    public void setCanMoveTrue()
+    {
         canMove = true;
     }
 }
