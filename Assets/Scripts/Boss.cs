@@ -54,8 +54,13 @@ public class Boss : MonoBehaviour
         {
             if (Time.time > nextAction) nextAction = Time.time + actionCooldown;
         }
+
+        foreach(GameObject heart in lifeList)
+        {
+            heart.SetActive(false);
+        }
         
-        for (int i = 0; i < life; i++)
+        for (int i = 0; i < life+1; i++)
         {
             lifeList[i].SetActive(true);
         }
@@ -82,7 +87,7 @@ public class Boss : MonoBehaviour
         {
             life--;
             if (life >= 0) GetComponent<Animator>().SetTrigger("hit");
-            else GetComponent<Animator>().
+            else GetComponent<Animator>().Play("BossDie");
             collision.GetComponent<Rigidbody2D>().velocity += Vector2.up * 20;
         }
     }
@@ -90,5 +95,10 @@ public class Boss : MonoBehaviour
     public void setCanMoveTrue()
     {
         canMove = true;
+    }
+
+    public void selfActiveFalse()
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -21316,9 +21316,13 @@ MonoBehaviour:
   player: {fileID: 1340436657}
   maxLeft: {fileID: 1503278647}
   maxRight: {fileID: 1418359566}
-  actionCooldown: 2
+  actionCooldown: 1
   moveSpeed: 5
-  lifeList: []
+  lifeList:
+  - {fileID: 553990808}
+  - {fileID: 2031876898}
+  - {fileID: 995276568}
+  - {fileID: 2063059906}
 --- !u!95 &599127399
 Animator:
   serializedVersion: 5
