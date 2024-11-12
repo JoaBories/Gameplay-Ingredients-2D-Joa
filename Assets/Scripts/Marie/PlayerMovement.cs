@@ -21,7 +21,13 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontalMovement = 0;
     private bool jump = false, isGrounded = false;
-    
+
+    // ######################## Modified for New input System ################
+
+    private Controls inputActions;
+
+    // #################################### End ##############################
+
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -29,15 +35,27 @@ public class PlayerMovement : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _audioPlayer = GetComponent<SoundPlayer>();
         voidLayer = LayerMask.NameToLayer("Void");
+
+        // ######################## Modified for New input System ################
+
+        inputActions = new Controls();
+        inputActions.Gameplay.Enable();
+
+        // #################################### End ##############################
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        // ######################## Modified for New input System ################
+
+        if (Input.GetKey(KeyCode.A) || inputActions.Gameplay.MoveLeft.inProgress)
         {
             horizontalMovement = -_speed;
             _spriteRenderer.flipX = true;
-        }else if (Input.GetKey(KeyCode.D))
+        }else if (Input.GetKey(KeyCode.D) || inputActions.Gameplay.MoveRight.inProgress)
+
+        // #################################### End ##############################
+
         {
             horizontalMovement = _speed;
             _spriteRenderer.flipX = false;
@@ -46,20 +64,27 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalMovement = 0;
         }
-        
+
+
         _animator.SetBool("Walk", (horizontalMovement != 0 && isGrounded));
         transform.position += new Vector3(horizontalMovement * Time.deltaTime, 0, 0);
 
         CheckGround();
+
+        // ######################## Modified for New input System ################
+
+        if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || inputActions.Gameplay.Jump.triggered))
         
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        // #################################### End ##############################
+
         {
             jump = true;
             isGrounded = false;
             _animator.SetBool("Jump", true);
             _audioPlayer.PlayAudio(SoundFX.Jump);
         }
-        
+
+
     }
 
     private void FixedUpdate()

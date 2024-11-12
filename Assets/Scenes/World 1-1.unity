@@ -403,13 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftLever: {fileID: 21300000, guid: 79052a93beaf1be48b6d9a73f3502f6c, type: 3}
   rightLever: {fileID: 21300000, guid: 7a9ebc8ea72042948a8ef9dbbc7f11b9, type: 3}
-  leverText: {fileID: 115646139}
   bridge: {fileID: 239763848}
---- !u!1 &115646139 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7143375837541955819, guid: 591c60f2657f49e4282a210bff1ea34d, type: 3}
-  m_PrefabInstance: {fileID: 6624169091655758370}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &188499735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6434551391195003386, guid: 663532b6ab9789b4e983f960e66872f5, type: 3}
@@ -9209,7 +9203,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: World 1-2
-  interactionText: {fileID: 115646139}
 --- !u!1 &2114033955
 GameObject:
   m_ObjectHideFlags: 0

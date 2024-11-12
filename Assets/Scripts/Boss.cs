@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject maxLeft;
-    [SerializeField] private GameObject maxRight;
-    [SerializeField] private float actionCooldown;
+    [SerializeField] public GameObject player;
+    [SerializeField] public GameObject maxLeft;
+    [SerializeField] public GameObject maxRight;
+    [SerializeField] private float actionCooldown = 1;
     [SerializeField] private float moveSpeed;
     [SerializeField] private List<GameObject> lifeList;
     private float nextAction;

@@ -10,13 +10,19 @@ public class lever : MonoBehaviour
     private bool playerOnLever;
     [SerializeField] private Sprite leftLever;
     [SerializeField] private Sprite rightLever;
-    [SerializeField] private GameObject leverText;
     [SerializeField] private GameObject bridge;
+
+    private Controls inputActions;
+
+    private void Awake()
+    {
+        inputActions = new Controls();
+        inputActions.Gameplay.Enable();
+    }
 
     private void Start()
     {
         isbroken = true;
-        leverText.SetActive(false);
         activated = false;
     }
 
@@ -26,7 +32,7 @@ public class lever : MonoBehaviour
         {
             if (isbroken)
             {
-                if (Input.GetKeyDown(KeyCode.E) && PlayerInventory.Instance.IsInInventory("LEVERHANDLE"))
+                if ((Input.GetKeyDown(KeyCode.E) || inputActions.Gameplay.Interact.triggered) && PlayerInventory.Instance.IsInInventory("LEVERHANDLE"))
                 {
                     isbroken = false;
                     GetComponent<SpriteRenderer>().sprite = leftLever;
@@ -35,7 +41,7 @@ public class lever : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.E) && !activated)
+                if ((Input.GetKeyDown(KeyCode.E) || inputActions.Gameplay.Interact.triggered) && !activated)
                 {
                     GetComponent<SpriteRenderer>().sprite = rightLever;
                     bridge.GetComponent<Animator>().Play("Bridge down");
@@ -51,25 +57,24 @@ public class lever : MonoBehaviour
         {
             playerOnLever = true;
 
-            leverText.SetActive(true);
             if (isbroken)
             {
                 if (PlayerInventory.Instance.IsInInventory("LEVERHANDLE"))
                 {
-                    leverText.GetComponent<TextMeshProUGUI>().text = "press E to repair lever";
+                    interactionText.instance.ShowText("press E to repair lever");
                 }
                 else
                 {
-                    leverText.GetComponent<TextMeshProUGUI>().text = "the lever is broken, go get the lever handle";
+                    interactionText.instance.ShowText("the lever is broken, go get the lever handle");
                 }
             }
             else if (!activated)
             {
-                leverText.GetComponent<TextMeshProUGUI>().text = "press E to action the lever";
+                interactionText.instance.ShowText("press E to action the lever");
             }
             else
             {
-                leverText.GetComponent<TextMeshProUGUI>().text = "";
+                interactionText.instance.ShowText("");
             }
         }
     }
@@ -78,7 +83,7 @@ public class lever : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            leverText.SetActive(false);
+            interactionText.instance.HideText();
             playerOnLever = false;
         }
     }
