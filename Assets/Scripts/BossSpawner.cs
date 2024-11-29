@@ -9,6 +9,7 @@ public class BossSpawner : MonoBehaviour
     [SerializeField] private GameObject walls;
     [SerializeField] private GameObject maxLeft;
     [SerializeField] private GameObject maxRight;
+    private GameObject boss;
 
     private bool spawned;
 
@@ -25,7 +26,8 @@ public class BossSpawner : MonoBehaviour
         if (collision.CompareTag("Player") && !spawned)
         {
             spawned = true;
-            Boss currentBoss = Instantiate(bossPrefab, new Vector3(61.5f, 8, 0), Quaternion.identity).GetComponent<Boss>();
+            boss = Instantiate(bossPrefab, new Vector3(61.5f, 9, 0), Quaternion.identity);
+            Boss currentBoss = boss.GetComponent<Boss>();
             currentBoss.maxLeft = maxLeft;
             currentBoss.maxRight = maxRight;
             currentBoss.player = collision.gameObject;
