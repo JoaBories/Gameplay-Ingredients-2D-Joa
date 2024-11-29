@@ -61,20 +61,20 @@ public class lever : MonoBehaviour
             {
                 if (PlayerInventory.Instance.IsInInventory("LEVERHANDLE"))
                 {
-                    interactionText.instance.ShowText("press E to repair lever");
+                    Interaction.instance.ShowText("press E to repair lever");
                 }
                 else
                 {
-                    interactionText.instance.ShowText("the lever is broken, go get the lever handle");
+                    Interaction.instance.ShowText("the lever is broken, go get the lever handle");
                 }
             }
             else if (!activated)
             {
-                interactionText.instance.ShowText("press E to action the lever");
+                Interaction.instance.ShowText("press E to action the lever");
             }
             else
             {
-                interactionText.instance.ShowText("");
+                Interaction.instance.ShowText("");
             }
         }
     }
@@ -83,7 +83,7 @@ public class lever : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            interactionText.instance.HideText();
+            Interaction.instance.HideText();
             playerOnLever = false;
         }
     }

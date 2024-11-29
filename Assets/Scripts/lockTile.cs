@@ -16,13 +16,13 @@ public class lockTile : MonoBehaviour
             }
             else
             {
-                interactionText.instance.ShowText("go get the key");
+                Interaction.instance.ShowText("go get the key");
             }
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        interactionText.instance.HideText();
+        Interaction.instance.HideText();
     }
 }

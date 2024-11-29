@@ -32,17 +32,17 @@ public class NewBehaviourScript : MonoBehaviour
         playerIsOn = true;
         if (PlayerInventory.Instance.IsInInventory("REDGEM"))
         {
-            interactionText.instance.ShowText("press E to go to the next level");
+            Interaction.instance.ShowText("press E to go to the next level");
         }
         else
         {
-            interactionText.instance.ShowText("go get the Red Gem");
+            Interaction.instance.ShowText("go get the Red Gem");
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerIsOn = false;
-        interactionText.instance.HideText();
+        Interaction.instance.HideText();
     }
 }

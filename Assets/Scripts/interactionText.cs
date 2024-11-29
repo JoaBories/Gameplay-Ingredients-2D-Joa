@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class interactionText : MonoBehaviour
+public class Interaction : MonoBehaviour
 {
-    public static interactionText instance;
+    public static Interaction instance;
+    [SerializeField] TextMeshProUGUI interactionText;
 
     private void Awake()
     {
@@ -16,7 +15,7 @@ public class interactionText : MonoBehaviour
     public void ShowText(string text)
     {
         gameObject.SetActive(true);
-        GetComponent<TextMeshProUGUI>().text = text;
+        interactionText.GetComponent<TextMeshProUGUI>().text = text;
     }
 
     public void HideText()
