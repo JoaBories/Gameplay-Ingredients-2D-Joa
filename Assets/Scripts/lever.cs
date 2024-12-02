@@ -61,7 +61,7 @@ public class lever : MonoBehaviour
             {
                 if (PlayerInventory.Instance.IsInInventory("LEVERHANDLE"))
                 {
-                    Interaction.instance.ShowText("press E to repair lever");
+                    Interaction.instance.ShowText("repair lever");
                 }
                 else
                 {
@@ -70,7 +70,7 @@ public class lever : MonoBehaviour
             }
             else if (!activated)
             {
-                Interaction.instance.ShowText("press E to action the lever");
+                Interaction.instance.ShowText("action the lever");
             }
             else
             {

@@ -460,7 +460,6 @@ GameObject:
   - component: {fileID: 1426235604745430658}
   - component: {fileID: 3169938397413460761}
   - component: {fileID: 2503519117741392444}
-  - component: {fileID: 2173166956692410034}
   m_Layer: 5
   m_Name: InteractionText
   m_TagString: Untagged
@@ -584,18 +583,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2173166956692410034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7143375837541955819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae3d4aa3a32419d47921d7f05394ba68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7811380098351694854
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,6 +719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4355686564056988445}
+  - component: {fileID: 7808209282153920774}
   m_Layer: 0
   m_Name: Interaction
   m_TagString: Untagged
@@ -757,6 +745,19 @@ Transform:
   - {fileID: 8797532368403070996}
   m_Father: {fileID: 5558691853481920814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7808209282153920774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7837091433424317567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854f64225ba76c4383cac85c96cb49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionText: {fileID: 2503519117741392444}
 --- !u!1 &8542735992228469685
 GameObject:
   m_ObjectHideFlags: 0

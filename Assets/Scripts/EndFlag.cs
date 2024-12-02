@@ -32,11 +32,11 @@ public class NewBehaviourScript : MonoBehaviour
         playerIsOn = true;
         if (PlayerInventory.Instance.IsInInventory("REDGEM"))
         {
-            Interaction.instance.ShowText("press E to go to the next level");
+            Interaction.instance.ShowText("go to the next level");
         }
         else
         {
-            Interaction.instance.ShowText("go get the Red Gem");
+            Interaction.instance.ShowText("return get the Red Gem");
         }
     }
 
