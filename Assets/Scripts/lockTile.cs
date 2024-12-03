@@ -13,6 +13,14 @@ public class lockTile : MonoBehaviour
             if (PlayerInventory.Instance.IsInInventory(keyID))
             {
                 gameObject.SetActive(false);
+                if (keyID == "ORANGE_KEY")
+                {
+                    PlayerKeyCounter.Instance.orangeKeyIncrementor();
+                }
+                else
+                {
+                    PlayerKeyCounter.Instance.yellowKeyIncrementor();
+                }
             }
             else
             {

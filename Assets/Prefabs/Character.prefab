@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6540632346380325283}
   - component: {fileID: 2731585590352087409}
   - component: {fileID: 5749265007529123459}
+  - component: {fileID: 3193513668524277430}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -337,6 +338,18 @@ MonoBehaviour:
   walkSfx: {fileID: 8300000, guid: dd6f86d69341a344595eab7f0d7a7fea, type: 3}
   hitSfx: {fileID: 8300000, guid: 40a3237cbaba77945a2e1241761ed4cd, type: 3}
   hurtSfx: {fileID: 8300000, guid: a8a6f58b59d0b914495cf68cbc3654db, type: 3}
+--- !u!114 &3193513668524277430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333895714326525154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d90043355163b545bc673facac0cba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6667183172719269285
 GameObject:
   m_ObjectHideFlags: 0
